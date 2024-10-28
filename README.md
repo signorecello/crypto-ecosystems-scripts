@@ -25,12 +25,12 @@ Searching GitHub for pieces of code is an intensive process, so there are some r
 
 Another big issue is that code search returns only the first 1000 results. Some smartness could be done to make sure we still get all the results. For now, just excluding all the repos called `aztec-packages` plus both orgs is enough to ensure all the repos are accounted for, as we know that `aztec-packages` contains a ton of `Nargo.toml` files.
 
-:::tip
-If this is not enough, we could just use preliminary searches or other techniques. Some ideas:
-    - Make a preliminary search for repos that have more than one `Nargo.toml` file, deduplicate, and search for every fork of that repo. Use them as partial result, then do the actual code search with `NOT <repo-name> in:name` to make the code search avoid these costly repos.
-    - Identify organizations that have a significant number of repos, and make a preliminary search for them (to ensure all their new repos are accounted for). Then do the actual code search with `NOT org:<org-name>` so the search avoids these results. Depending on how many repos the organization has, this could save some results.
-    - Encode the URI of the github call with a ton of `NOT repo:repo-already-included`, and cut it to the traditional URI limit (around 2000 chars). This could save around 40-50 results, which is not much.
-:::
+> [!TIP]
+>If this is not enough, we could just use preliminary searches or other techniques. Some ideas:
+>
+> - Make a preliminary search for repos that have more than one `Nargo.toml` file, deduplicate, and search for every fork of that repo. Use them as partial result, then do the actual code search with `NOT <repo-name> in:name` to make the code search avoid these costly repos.
+> - Identify organizations that have a significant number of repos, and make a preliminary search for them (to ensure all their new repos are accounted for). Then do the actual code search with `NOT org:<org-name>` so the search avoids these results. Depending on how many repos the organization has, this could save some results.
+> - Encode the URI of the github call with a ton of `NOT repo:repo-already-included`, and cut it to the traditional URI limit (around 2000 chars). This could save around 40-50 results, which is not much.
 
 ## Usage
 
